@@ -11,3 +11,13 @@ function composite(bgImg, fgImg, fgOpac, fgPos) {
         }
 
 }
+
+function new-composite(bgImg, fgImg, fgOpac, fgPos) {
+        for (var i = 0; i < bgImg.data.length; i += 4) {
+                mask = fgImg.data[i+3];
+                bgImg.data[i + 0] = mask / 255 * fgImg.data[i+0] + (1 - mask / 255 ) * bgImg.data[i+0];
+                bgImg.data[i + 1] = mask / 255 * fgImg.data[i+1] + (1 - mask / 255 ) * bgImg.data[i+1];
+                bgImg.data[i + 2] = mask / 255 * fgImg.data[i+2] + (1 - mask / 255 ) * bgImg.data[i+2];
+        }
+
+}
