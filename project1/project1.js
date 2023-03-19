@@ -12,10 +12,10 @@
 // 
 function composite(bgImg, fgImg, fgOpac, fgPos) {
         for (var i = 0; i < bgImg.data.length; i += 4) {
-                mask = fgImg.data[i + 3] * fgOpac;
-                bgImg.data[i] = mask / 255 * fgImg.data[i] + (1 - mask / 255) * bgImg.data[i];
-                bgImg.data[i + 1] = mask / 255 * fgImg.data[i + 1] + (1 - mask / 255) * bgImg.data[i + 1];
-                bgImg.data[i + 2] = mask / 255 * fgImg.data[i + 2] + (1 - mask / 255) * bgImg.data[i + 2];
-                bgImg.data[i + 3] = mask / 255 * fgImg.data[i + 3] + (1 - mask / 255) * bgImg.data[i + 3];
+                alpha = fgImg.data[i + 3] * fgOpac / 255;
+                bgImg.data[i] = alpha * fgImg.data[i] + (1 - alpha) * bgImg.data[i];
+                bgImg.data[i + 1] = alpha * fgImg.data[i + 1] + (1 - alpha) * bgImg.data[i + 1];
+                bgImg.data[i + 2] = alpha * fgImg.data[i + 2] + (1 - alpha) * bgImg.data[i + 2];
+                bgImg.data[i + 3] = alpha * fgImg.data[i + 3] + (1 - alpha) * bgImg.data[i + 3];
         }
 }
