@@ -6,13 +6,13 @@
 function GetTransform( positionX, positionY, rotation, scale )
 {
 	var deg2rads = (3.1459 / 180.0);
-	var theta = -rotation * deg2rads;
+	var theta = rotation * deg2rads;
 	// console.log("pos = ", positionX, positionY);
 	// console.log("scale = ", scale);
 	// console.log("theta = ", theta);
 	return Array(
-		         scale * Math.cos(theta), -Math.sin(theta), 0,
-                 Math.sin(theta), scale * Math.cos(theta), 0,
+		         scale * Math.cos(theta), Math.sin(theta), 0,
+                 -Math.sin(theta), scale * Math.cos(theta), 0,
 				 positionX, positionY, 1
 				 );
 }
